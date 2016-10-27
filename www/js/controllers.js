@@ -2,6 +2,11 @@ var app = angular.module('sushiMe.controllers', []);
 
 app.controller("YelpController", function($scope, YelpService) {
 	$scope.yelp = YelpService;
+	$scope.suggestView = false;
+	
+	$scope.showPopUp = function() {
+		alert('Displaying Pop Up!');
+	}
 
 	$scope.doRefresh = function() {
 		if (!$scope.yelp.isLoading) {
@@ -39,6 +44,10 @@ app.controller("YelpController", function($scope, YelpService) {
 		];
 
 		launchnavigator.navigate(destination, source);
+	}
+	$scope.sortBy = function(propertyName) {
+		$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : true;
+		$scope.propertyName = propertyName;
 	}
 
 		$scope.openMap = function(restaurant) {
